@@ -1,0 +1,37 @@
+# 프롬프트: Turborepo 기반의 모던 React 웹 애플리케이션 구축
+
+## 목표
+
+pnpm 워크스페이스와 Turborepo를 사용하여 모노레포 환경을 구축하고, 그 안에 최신 기술 스택을 사용하는 샘플 React 웹 애플리케이션을 생성합니다.
+
+## 상세 요구사항
+
+1.  **프로젝트 초기화:**
+    *   `pnpm init`을 사용하여 루트 `package.json`을 생성합니다.
+    *   `pnpm` 워크스페이스를 사용하도록 `pnpm-workspace.yaml` 파일을 설정합니다.
+    *   `Turborepo`를 개발 의존성으로 추가하고, `turbo.json` 기본 설정을 구성합니다.
+
+2.  **모노레포 구조:**
+    *   `apps`와 `packages` 디렉토리를 생성합니다.
+    *   `apps/web`: 샘플 React 애플리케이션이 위치할 디렉토리입니다.
+    *   `packages/ui`: 공통으로 사용할 React 컴포넌트 라이브러리 패키지입니다.
+    *   `packages/tsconfig`: 공유 TypeScript 설정을 위한 패키지입니다.
+
+3.  **웹 애플리케이션 (`apps/web`):**
+    *   `Vite`와 `React` + `TypeScript`를 사용하여 새로운 웹 애플리케이션을 생성합니다.
+    *   다음 라이브러리를 의존성으로 추가합니다:
+        *   `@radix-ui/themes`: UI 컴포넌트를 위해 사용합니다.
+        *   `@fortawesome/fontawesome-svg-core`, `@fortawesome/react-fontawesome` 및 관련 아이콘 패키지: 아이콘을 위해 사용합니다.
+        *   `@tanstack/react-query`: 데이터 페칭 및 상태 관리를 위해 사용합니다.
+        *   `zod`: 데이터 유효성 검증을 위해 사용합니다.
+    *   `App.tsx` 파일에 다음 기능을 포함하는 샘플 페이지를 구현합니다:
+        *   Radix UI의 `Button`과 `Card` 컴포넌트를 사용합니다.
+        *   Font Awesome 아이콘을 버튼 내부에 표시합니다.
+        *   `zod`를 사용하여 `https://jsonplaceholder.typicode.com/todos/1` API의 응답 스키마를 정의하고, 데이터를 가져온 후 해당 스키마로 유효성을 검증합니다.
+        *   `useQuery`를 사용하여 유효성 검증을 통과한 데이터를 Card 내부에 제목으로 표시합니다. 로딩 및 에러 상태도 간단히 처리합니다.
+
+4.  **스크립트 설정:**
+    *   루트 `package.json`에 Turborepo를 사용하여 `dev`, `build`, `lint` 스크립트를 실행할 수 있도록 설정합니다. (예: `"dev": "turbo dev"`)
+
+5.  **최종 실행:**
+    *   모든 설정이 완료되면, 루트 디렉토리에서 `pnpm dev` (또는 `turbo dev`) 명령어를 실행하여 웹 애플리케이션이 정상적으로 시작되는지 확인합니다.
